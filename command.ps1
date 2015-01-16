@@ -105,6 +105,20 @@ $ex_dir.Add("temp", "C:\temp")
 $ex_dir.Add("cms", "C:\workspace\maxpaceCms")
 $ex_dir.Add("cmsdic", "C:\workspace\maxpaceCms\doc")
 
+#----------------------------------------------------------
+# Utility functions
+#----------------------------------------------------------
+function terminal([String]$name='Default Settings') {
+    c:\utility\putty -load $name
+}
+function gitbash() {
+    $cmd = "C:\Program Files (x86)\Git\bin\sh.exe"
+    $arg1 = "--login"
+    $arg2 = "-i"
+    & $cmd $arg1 $arg2
+}
+
+
 function up {
  Set-Location c:\workspace\WanSync-Daemon
  ant
@@ -136,6 +150,5 @@ function dn2 {
  pscp -P 6667 root@175.196.214.41:/root/kalpa_test/*.sh C:\workspace\WanSync-Daemon\kalpa_test
 }
 
-function ppp([String]$name) {
-    c:\utility\putty -load $name
-}
+
+
