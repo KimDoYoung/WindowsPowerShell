@@ -108,7 +108,7 @@ $ex_dir.Add("cmsdic", "C:\workspace\maxpaceCms\doc")
 #----------------------------------------------------------
 # Utility functions
 #----------------------------------------------------------
-function terminal([String]$name='Default Settings') {
+function term([String]$name='Default Settings') {
     c:\utility\putty -load $name
 }
 function gitbash() {
