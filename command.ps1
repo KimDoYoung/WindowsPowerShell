@@ -20,6 +20,8 @@ function go ([string] $location)
 }
 $GLOBAL:go_dir = @{};
 $go_dir.Add("pss", "$psshome")
+$go_dir.Add("program", "C:\Program Files")
+$go_dir.Add("program86", "C:\Program Files (x86)")
 $go_dir.Add("deploy", "C:\workspace\cmsDeploy")
 $go_dir.Add("common", "C:\workspace\cmsDeploy\deployCommon")
 $go_dir.Add("proxy", "C:\workspace\cmsDeploy\deployProxy")
@@ -28,7 +30,7 @@ $go_dir.Add("test", "C:\workspace\cmsDeploy\deployTest")
 $go_dir.Add("latte", "C:\workspace\CmsLatte")
 $go_dir.Add("cms", "C:\workspace\maxpaceCms")
 $go_dir.Add("target", "C:\temp")
-#현재디렉토리를 저장한다
+#add directroy 
 function adddir($nm)
 {
   $now = pwd;
@@ -77,33 +79,6 @@ $run_exes.Add("xscrchk","C:\Utility\xscrchk.exe")
 $run_exes.Add("mysql","C:\Program Files (x86)\SQLyog Enterprise\SQLyogEnt.exe")
 
 $run_exes.Add("movie","C:\Utility\MovieRename.exe")
-
-
-#----------------------------------------------------------
-# 'ex' command and targets
-#----------------------------------------------------------
-if( $GLOBAL:ex_dir -eq $null ) 
-{
-  $GLOBAL:ex_dir = @{};
-}
-function ex ([string] $location) 
-{
-	if( $ex_dir.ContainsKey($location) ) 
-	{
-		explorer $ex_dir[$location];
-	} else {
-		write-output "다음과 같은 디렉토리가 정해져있읍니다:";
-		write-output $ex_dir;
-	}
-}
-$GLOBAL:ex_dir = @{};
-$ex_dir.Add("board", "C:\workspace\maxpaceBoard\WebContent")
-$ex_dir.Add("springweb", "C:\workspace\CmsSpring2012\src\main\webapp\WEB-INF")
-$ex_dir.Add("tomcat", "C:\Apache_Eclipse\apache-tomcat-7.0.29")
-$ex_dir.Add("maven", "C:\Apache_Eclipse\apache-maven-3.0.4")
-$ex_dir.Add("temp", "C:\temp")
-$ex_dir.Add("cms", "C:\workspace\maxpaceCms")
-$ex_dir.Add("cmsdic", "C:\workspace\maxpaceCms\doc")
 
 #----------------------------------------------------------
 # Utility functions

@@ -23,7 +23,7 @@ Set-Alias evernote "C:\Program Files (x86)\Evernote\Evernote\Evernote.exe"
 Set-Alias luna "C:\java_utils\eclipse\eclipse.exe"
 Set-Alias subl "C:\Program Files\Sublime Text 3\sublime_text.exe"
 Set-Alias ll Get-ChildItem
-
+Set-Alias vi "C:\Program Files (x86)\Git\share\vim\vim74\vim.exe"
 #------------------------------------------------------------
 # Prompt and Command
 #------------------------------------------------------------
