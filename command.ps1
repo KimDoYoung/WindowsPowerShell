@@ -22,14 +22,7 @@ $GLOBAL:go_dir = @{};
 $go_dir.Add("pss", "$psshome")
 $go_dir.Add("program", "C:\Program Files")
 $go_dir.Add("program86", "C:\Program Files (x86)")
-$go_dir.Add("deploy", "C:\workspace\cmsDeploy")
-$go_dir.Add("common", "C:\workspace\cmsDeploy\deployCommon")
-$go_dir.Add("proxy", "C:\workspace\cmsDeploy\deployProxy")
-$go_dir.Add("agent", "C:\workspace\cmsDeploy\deployAgent")
-$go_dir.Add("test", "C:\workspace\cmsDeploy\deployTest")
-$go_dir.Add("latte", "C:\workspace\CmsLatte")
-$go_dir.Add("cms", "C:\workspace\maxpaceCms")
-$go_dir.Add("target", "C:\temp")
+$go_dir.Add("dev", "C:\workspace\dev")
 #add directroy 
 function adddir($nm)
 {
