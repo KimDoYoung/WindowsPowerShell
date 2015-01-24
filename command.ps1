@@ -23,6 +23,7 @@ $go_dir.Add("pss", "$psshome")
 $go_dir.Add("program", "C:\Program Files")
 $go_dir.Add("program86", "C:\Program Files (x86)")
 $go_dir.Add("dev", "C:\workspace\dev")
+$go_dir.Add("host", "C:\Windows\System32\drivers\etc")
 #add directroy 
 function adddir($nm)
 {
