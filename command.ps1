@@ -2,7 +2,7 @@
 # 명령어들 
 #
 #----------------------------------------------------------
-# 'go' command and targets
+# 'go' command and dess
 #----------------------------------------------------------
 if( $GLOBAL:go_dir -eq $null ) 
 {
@@ -24,6 +24,8 @@ $go_dir.Add("program", "C:\Program Files")
 $go_dir.Add("program86", "C:\Program Files (x86)")
 $go_dir.Add("dev", "C:\workspace\dev")
 $go_dir.Add("host", "C:\Windows\System32\drivers\etc")
+$go_dir.Add("apache", "C:\jmes\Apache24")
+$go_dir.Add("jstest", "C:\Users\Administrator\Dropbox\jsTest")
 #add directroy 
 function adddir($nm)
 {
@@ -69,11 +71,14 @@ $run_exes.Add("sharefold","c:\windows\system32\fsmgmt.msc")
 $run_exes.Add("usr","c:\windows\system32\lusrmgr.msc")
 
 $run_exes.Add("doc","C:\Program Files (x86)\Microsoft Office\Office12\WINWORD.EXE")
+$run_exes.Add("xls","C:\Program Files (x86)\Microsoft Office\Office12\EXCEL.EXE")
+$run_exes.Add("ppt","C:\Program Files (x86)\Microsoft Office\Office12\POWERPNT.EXE")
+
 $run_exes.Add("xscrchk","C:\Utility\xscrchk.exe")
 $run_exes.Add("mysql","C:\Program Files (x86)\SQLyog Enterprise\SQLyogEnt.exe")
 
 $run_exes.Add("movie","C:\Utility\MovieRename.exe")
-
+$run_exes.Add("br","C:\Program Files (x86)\Brackets\Brackets.exe")
 #----------------------------------------------------------
 # Utility functions
 #----------------------------------------------------------
@@ -86,38 +91,35 @@ function gitbash() {
     $arg2 = "-i"
     & $cmd $arg1 $arg2
 }
-
-
-function up {
- Set-Location c:\workspace\WanSync-Daemon
- ant
- Set-Location c:\utility
- psftp root@192.168.0.32 -b c:\utility\wansync.txt
- del c:\workspace\WanSync-Daemon\*.jar
-}
-function up2 {
- Set-Location c:\workspace\WanSync-Daemon
- ant
- Set-Location c:\utility
- psftp root@175.196.214.41 -P 6667 -b c:\utility\wansync.txt
- del c:\workspace\WanSync-Daemon\*.jar
-}
-function up3 {
- Set-Location c:\workspace\WanSync-Daemon
- ant
- Set-Location c:\utility
- pscp -P 6667 -r c:\workspace\WanSync-Daemon\config-inf  root@175.196.214.41:/root/WanSync
- pscp -P 6667 c:\workspace\WanSync-Daemon\WanSync-Daemon.jar  root@175.196.214.41:/root/WanSync
-
-}
-function dn {
- pscp -P 6667 root@175.196.214.41:/root/WanSync/log/WANSYNC.log c:\
-}
-function dn2 {
- pscp -P 6667 root@175.196.214.41:/root/WanSync/remote_commands/* C:\workspace\WanSync-Daemon\wansync\remote_commands
- pscp -P 6667 root@175.196.214.41:/root/WanSync/*.sh C:\workspace\WanSync-Daemon\wansync\
- pscp -P 6667 root@175.196.214.41:/root/kalpa_test/*.sh C:\workspace\WanSync-Daemon\kalpa_test
+function killjava(){
+  taskkill /im java.exe /f
 }
 
-
-
+function backup {
+	$today = (Get-Date).ToString("yyyy_MM_dd_HH_mm_ss")
+	$srcFolders = @(
+		"c:\workspace\dev"
+	)
+	$desFolder = "c:\temp\backup_$today"
+	if(!(Test-Path -Path $desFolder)) {
+		New-Item -ItemType Directory -Force -Path $desFolder
+	}
+	foreach($srcFolder in $srcFolders){
+		Copy-Item $srcFolder $desFolder -recurse -force
+	}
+	#zip -q -r $des_file c:/jmes/web/admin
+}
+function xcopy(
+	[string]$src = $(throw "specify the source folder"),
+	[string]$des = $(throw "specify the destination folder")
+){
+	$src = $src -replace '\*S'
+	if(test-path $des){
+		switch -regex($src){
+			'\\S' {$src = "$src*"; break}
+			'\w$' {$src = "$src\*"; break}
+			default {break}
+		}
+	}
+	Copy-Item $src $des -recurse -force
+}
