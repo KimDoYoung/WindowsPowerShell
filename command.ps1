@@ -82,10 +82,17 @@ $run_exes.Add("br","C:\Program Files (x86)\Brackets\Brackets.exe")
 #----------------------------------------------------------
 # Utility functions
 #----------------------------------------------------------
+function backcolor(
+  [string]$color = $(throw "specify backgroud color name")
+){
+    $Host.UI.RawUI.BackgroundColor = $color
+	Clear-Host
+}
 function term([String]$name='Default Settings') {
     c:\utility\putty -load $name
 }
 function gitbash() {
+    backcolor 'Black'
     $cmd = "C:\Program Files (x86)\Git\bin\sh.exe"
     $arg1 = "--login"
     $arg2 = "-i"
