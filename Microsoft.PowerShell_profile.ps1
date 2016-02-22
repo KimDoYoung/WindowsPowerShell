@@ -3,7 +3,7 @@
 #---------------------------------------------------
 $GLOBAL:psshome="C:\Users\Administrator\Documents\WindowsPowerShell"
 $GLOBAL:JAVA_HOME="C:\Program Files\Java\jdk1.8.0_11"
-$GLOBAL:MAVEN_HOME="C:\java_utils\apache-maven-3.2.5"
+$GLOBAL:MAVEN_HOME="C:\java_utils\apache-maven-3.3.9"
 
 #---------------------------------------------------
 # Path
@@ -13,6 +13,9 @@ $env:path += ';c:\Windows\System32'
 $env:path += ';C:\utility'
 $env:path += ';$JAVA_HOME\bin;$MAVEN_HOME\bin'
 $env:path += ';C:\Program Files (x86)\Git\bin'
+$env:path += ';C:\Ruby22-x64\bin'
+$env:path += ';C:\MongoDb\bin'
+$env:path += ';C:\Utility\ffmpeg\bin'
 # PowerShell Script¸¦ ¸ð¾ÆµÐ °÷ 
 
 #---------------------------------------------------------
