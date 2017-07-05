@@ -130,3 +130,10 @@ function xcopy(
 	}
 	Copy-Item $src $des -recurse -force
 }
+function btest {
+	$projectFolder="C:\Users\Administrator\Documents\Visual Studio 2015\Projects\Bibliotheca\SqlMapperTest"
+	Set-Location $projectFolder
+	msbuild
+	$t="$projectFolder\bin\Debug\SqlMapperTest.exe"
+	& $t
+}
